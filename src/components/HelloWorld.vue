@@ -27,6 +27,9 @@
 import datas from "../data/index";
 import LinkButtons from "../components/LinkButtons.vue";
 import AboutView from "../views/AboutView.vue";
+import Track from "../components/Track";
+import Echarts from "../components/Echarts";
+import EchartsAll from "../components/EchartsAll";
 export default {
   name: "HelloWorld",
   data() {
@@ -34,9 +37,9 @@ export default {
       menuLists: [
         { path: "LinkButtons", pageName: "选项1" },
         { path: "AboutView", pageName: "选项2" },
-        { path: "33333333", pageName: "选项3" },
-        { path: "44444444", pageName: "选项4" },
-        { path: "66666666", pageName: "选项5" },
+        { path: "Track", pageName: "选项3" },
+        { path: "Echarts", pageName: "选项4" },
+        { path: "EchartsAll", pageName: "选项5" },
         { path: "77777777", pageName: "选项6" },
         { path: "88888888", pageName: "选项7" },
         { path: "99999999", pageName: "选项8" },
@@ -54,6 +57,9 @@ export default {
   components: {
     LinkButtons,
     AboutView,
+    Track,
+    Echarts,
+    EchartsAll,
   },
   computed: {},
   methods: {
