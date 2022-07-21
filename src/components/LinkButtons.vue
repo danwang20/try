@@ -1,6 +1,6 @@
 <template>
   <section class="link-buttons c--link-buttons">
-    <!-- <div class="link-buttons-container">
+    <div class="link-buttons-container">
       <el-button
         v-for="(item, index) in items"
         :key="index"
@@ -10,7 +10,7 @@
       >
         {{ item.label }}
       </el-button>
-    </div> -->
+    </div>
     <h1>
       This is an about link This is an about link This is an about link This is
       an about link This is an about link
@@ -105,16 +105,26 @@ export default {
   },
   computed: {
     // items() {
-    //   return this.option.items || [];
+    //   return this.option || [];
     // },
     // curOption() {
     //   return Object.assign({}, this.defaultOption, this.option);
     // },
   },
+  mounted() {
+    console.log(this.option);
+  },
   methods: {
     clickHandler(item) {
       const methods = this.methods;
       methods.clickHandler && methods.clickHandler.call(this, item);
+      this.$emit("link", "data");
+      this.showTry();
+    },
+    showTry() {
+      let aaa = {a:1,b:2,c:3}
+      let bbb = {...aaa,d:4,e:5}
+      console.log(bbb);
     },
   },
 };
@@ -123,8 +133,10 @@ export default {
 <style scoped>
 .link-buttons {
   position: relative;
-  height: auto;
+  /* height: auto; */
   background-color: rgb(116, 161, 10);
+  width: 100%;
+  height: 100%;
 }
 .link-buttons-container {
   position: relative;
@@ -139,5 +151,11 @@ export default {
 }
 .link-buttons-right {
   text-align: right;
+}
+/*  animation: blink 1s infinite linear;
+  border-color: var(--error-color-default); */
+.ebutton {
+  animation: blink 1s infinite linear;
+  border-color: var(red);
 }
 </style>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>打印</title>
+  <link href="css/common.css" type="text/css" rel="stylesheet">
+  <link href="css/normalize.css" type="text/css" rel="stylesheet">
+  <link href="css/theme-origin.css" type="text/css" rel="stylesheet">
+  <link href="css/element-ui.min.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
+    h3 {
+      text-align: center;
+    }
+
+    .btn-box {
+      position: relative;
+      padding: 4px 10px;
+      text-align: right;
+    }
+
+    #boxer {
+      position: relative;
+      height: auto;
+      padding: 8pt;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    #boxer .el-table__body,#boxer .el-table__footer,#boxer .el-table__header{
+      table-layout: auto;
+    }
+
+    td{
+      border: 1px solid #666666;
+      padding: 1pt;
+      white-space: pre-line;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+
+    th{
+      padding-bottom: 6pt;
+    }
+
+    .gutter{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="btn-box">
+  <button id="close-window" class="el-button el-button--primary el-button--mini">
+    关闭
+  </button>
+  <button id="print" class="el-button el-button--primary el-button--mini">
+    打印
+  </button>
+</div>
+<hr>
+<div id="boxer"></div>
+<script>
+  const { ipcRenderer } = require('electron')
+
+  document.getElementById('print').addEventListener('click', printData)
+  document.getElementById('close-window').addEventListener('click', closeWindow)
+
+  function printData() {
+    document.querySelector('.btn-box').style.display = 'none'
+    setTimeout(() => {
+      ipcRenderer.send('printAction')
+    }, 100)
+  }
+
+  function closeWindow () {
+    ipcRenderer.send('printCloseWindow')
+  }
+
+  ipcRenderer.on('printAppendContent', (event, printHtml) => {
+    // document.getElementById('boxer').innerHTML = printHtml
+    document.querySelector('#boxer').innerHTML = printHtml
+
+    document.querySelector('.el-table__body-wrapper').style.height = 'auto'
+    document.querySelectorAll('.el-table__body').forEach((item) => {
+      item.style.width = '100%'
+      item.style.maxWidth = '100%'
+    })
+    let tHeader = document.querySelectorAll('.el-table__header')
+    tHeader.forEach((item) => {
+      item.style.width = '100%'
+      item.style.maxWidth = '100%'
+    })
+    document.querySelector('.el-table__header-wrapper').querySelectorAll('.cell').forEach((cell) => {
+      if (!cell.innerHTML.includes('操作')) return false
+      cell.innerHTML = '确认情况'
+    })
+    document.querySelectorAll('.el-tooltip').forEach((item) => {
+      item.style.width = 'unset'
+    })
+    let tBody = document.querySelector('.el-table__body')
+    tBody.querySelectorAll('.column-btn-action').forEach((item) => {
+      item.style.cssText = 'cursor: auto; border: none;'
+      if (!item.classList.contains('is-disabled')) {
+        item.disabled = true
+        item.classList.add('is-disabled')
+        item.innerHTML = '未确认'
+      }
+    })
+  })
+</script>
+ 
+</body>
+</html>

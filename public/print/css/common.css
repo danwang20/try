@@ -1,0 +1,16 @@
+/* 通用变量定义 */
+:root{
+    --mini-space: 2px;
+    --small-space: 4px;
+    --middle-space: 6px;
+    --large-space: 8px;
+    --extra-space: 10px;
+}
+
+.warning-msg{
+    background-color: var(--warn-color-alpha);
+}
+
+.error-msg{
+    background-color: var(--error-color-alpha);
+}

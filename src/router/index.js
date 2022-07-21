@@ -6,7 +6,14 @@ import AboutView from '../views/AboutView'
 import LinkButtons from '../components/LinkButtons'
 import Track from '../components/Track'
 import Echarts from '../components/Echarts'
-import EchartsAll from '../components/EchartsAll'
+// import EchartsAll from '../components/EchartsAll'
+import ScrollTry from '../components/scrollTry'
+import TreeTry from '../components/TreeTry'
+import Gzp from '../components/Gzp' //flexTry
+import flexTry from '../components/flexTry' //flexTry TopTitle
+import flexTry1 from '../components/flexTry1' //flexTry TopTitle
+import TopTitle from '../components/TopTitle'
+import TableTry from '../components/tableTry' //TableTry
 
 Vue.use(VueRouter)
 
@@ -40,10 +47,45 @@ const routes = [{
     name: 'Echarts',
     component: Echarts
   },
+  // {
+  //   path: '/EchartsAll',
+  //   name: 'EchartsAll',
+  //   component: EchartsAll
+  // },
   {
-    path: '/EchartsAll',
-    name: 'EchartsAll',
-    component: EchartsAll
+    path: '/ScrollTry',
+    name: 'ScrollTry',
+    component: ScrollTry
+  },
+  {
+    path: '/TreeTry',
+    name: 'TreeTry',
+    component: TreeTry
+  },
+  {
+    path: '/Gzp',
+    name: 'Gzp',
+    component: Gzp
+  },
+  {
+    path: '/flexTry',
+    name: 'flexTry',
+    component: flexTry
+  },
+  {
+    path: '/flexTry1',
+    name: 'flexTry1',
+    component: flexTry1
+  },
+  {
+    path: '/TopTitle',
+    name: 'TopTitle',
+    component: TopTitle
+  },
+  {
+    path: '/TableTry',
+    name: 'TableTry',
+    component: TableTry
   },
 ]
 

@@ -1,14 +1,11 @@
 <template>
-  <div id="app" style="width: 100%; height: 800px"></div>
+  <div id="app" style="width: 500px; height: 500px"></div>
 </template>
 
 <script>
-// import echarts from "echarts";
-// import "./assets/mapdata/china.js";
-// import "./assets/mapdata/province/province.js";
-import * as echarts from 'echarts'
-import "../assets/mapdata/china"
-import "../assets/mapdata/province/province"
+import * as echarts from "echarts";
+import "../assets/mapdata/china";
+import "../assets/mapdata/province/province";
 export default {
   name: "app",
   data() {
@@ -158,11 +155,11 @@ export default {
 }
 html,
 body {
-  height: 100%;
+  height: 720px;
 }
 body {
 }
 #app {
-  height: 100%;
+  height: 720px;
 }
 </style>
